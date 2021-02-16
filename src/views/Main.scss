@@ -1,0 +1,38 @@
+.Main {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+
+  section {
+    padding: 0 5rem;
+    margin-top: 3rem;
+
+    h1 {
+      color: #2457A4;
+      margin-bottom: 2rem;
+    }
+
+    & > div {
+      display: inline-flex;
+
+      & > div {
+        margin-right: 2rem;
+      }
+
+      /*Delayed effect animation*/
+      @for $i from 1 to 8 {
+        & > div:nth-child(#{$i}) { animation-duration: $i * 0.25s; }
+      }
+    }
+  }
+}
+
+.Main__Header {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+  }
+}

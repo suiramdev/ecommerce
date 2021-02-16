@@ -1,0 +1,98 @@
+@keyframes CardAppear {
+  from {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.Article {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 225px;
+  height: 350px;
+  border-radius: 8px;
+  background: white;
+  color: #2457A4;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  animation: CardAppear 1s;
+
+  img {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.Article__Promo {
+  position: absolute;
+  display: inline-flex;
+  justify-content: center;
+  top: 1rem;
+  left: 0;
+  width: 40px;
+  padding: 0.25rem;
+  border-radius: 0 8px 8px 0;
+  background: #FF3B3B;
+  color: white;
+  font-size: 0.8rem;
+}
+
+.Article__Content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0.5rem;
+}
+
+.Article__Name {
+  margin-bottom: 1rem;
+}
+
+.Article__Price {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-right: 0.75rem;
+}
+
+.Article__OldPrice {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #FF3B3B;
+  text-decoration: line-through;
+}
+
+.Article__Buy {
+  position: relative;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  background: none;
+  color: #7affc4;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: left;
+  border: 2px solid #7affc4;
+  border-radius: 8px;
+  transition: color 0.2s, border-color 0.2s;
+
+  svg, img {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: #00ff9f;
+    border: 2px solid #00ff9f;
+  }
+}
