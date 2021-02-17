@@ -10,9 +10,9 @@ class Main extends Component {
                 <div className="Main__Header">
                     <img src={Banner} />
                 </div>
-                <section>
+                <section className="Main__Articles">
                     <h1>Articles in trends</h1>
-                    <div>
+                    <div className="Main__Articles-content">
                         <Article />
                         <Article />
                         <Article />
@@ -22,18 +22,18 @@ class Main extends Component {
                         <Article />
                     </div>
                 </section>
-                <section>
+                <section className="Main__Articles">
                     <h1>Recommended for you</h1>
-                    <div>
+                    <div className="Main__Articles-content">
                         <Article />
                         <Article />
                         <Article />
                         <Article />
                     </div>
                 </section>
-                <section>
+                <section className="Main__Articles">
                     <h1>The one you looked</h1>
-                    <div>
+                    <div className="Main__Articles-content">
                         <Article />
                         <Article />
                         <Article />

@@ -1,31 +1,46 @@
 .Main {
   display: flex;
   flex-direction: column;
+}
 
-  section {
-    padding: 0 5rem;
-    margin-top: 3rem;
+.Main__Articles {
+  padding: 0 5rem;
+  margin-top: 3rem;
 
-    h1 {
-      color: #2457A4;
-      margin-bottom: 2rem;
-    }
+  h1 {
+    color: #2457A4;
+    margin-bottom: 2rem;
+  }
+}
 
-    & > div {
-      display: inline-flex;
-      width: 100%;
-      overflow-y: hidden;
-      overflow-x: scroll;
+.Main__Articles-content {
+  display: inline-flex;
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
 
-      & > div {
-        margin-right: 2rem;
-      }
+  & > div {
+    margin-right: 2rem;
+  }
 
-      /*Delayed effect animation*/
-      @for $i from 1 to 8 {
-        & > div:nth-child(#{$i}) { animation-duration: $i * 0.25s; }
-      }
-    }
+  /*Delayed effect animation*/
+  @for $i from 1 to 8 {
+    & > div:nth-child(#{$i}) { animation-duration: $i * 0.25s; }
+  }
+
+  &::-webkit-scrollbar {
+    height: 10px;
+    border-radius: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #efefef;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: #e2e2e2;
   }
 }
 
@@ -36,5 +51,12 @@
 
   img {
     position: absolute;
+  }
+
+  h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }

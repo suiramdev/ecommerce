@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../../../../wamp64/www/javascript_eleve/.idea/javascript_eleve.iml" filepath="$PROJECT_DIR$/../../../../../wamp64/www/javascript_eleve/.idea/javascript_eleve.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/siomazone.iml" filepath="$PROJECT_DIR$/.idea/siomazone.iml" />
     </modules>
   </component>
