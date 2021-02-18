@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import './Header.scss';
 import {ArrowDropDown, LocalShipping, Lock, Search, ShoppingBasket} from "@material-ui/icons";
 import flagFR from 'images/flags/fr-FR.svg';
@@ -22,11 +23,11 @@ class Header extends Component {
                 </div>
                 <div className="Header__Main">
                     <div className="Header-start">
-                        <h1>сука блиат</h1>
+                        <Link className="Header__Main-title" to="/">сука блиат</Link>
                     </div>
                     <div className="Header-end">
                         <div className="Header__Main__Search">
-                            <button className="Header__Main__Search-submit"><Search /></button>
+                            <Link to="/articles" className="Header__Main__Search-submit"><Search /></Link>
                             <input type="text" placeholder="Search for an article, a brand..." />
                         </div>
                         <div className="Header__Main__Cart"><ShoppingBasket /></div>
