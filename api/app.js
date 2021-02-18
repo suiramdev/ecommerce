@@ -13,6 +13,8 @@ db = mysql.createConnection({
   database: 'ecommerce'
 });
 
+db.connect();
+
 var indexRouter = require('./routes/index');
 var articlesRouter = require('./routes/articles');
 

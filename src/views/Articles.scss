@@ -1,0 +1,35 @@
+.Articles {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.Articles-content {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 0.5rem;
+  margin: 1.5rem;
+
+  & > div {
+    margin-right: 2rem;
+  }
+
+  /*Delayed effect animation*/
+  @for $i from 1 to 8 {
+    & > div:nth-child(#{$i}) { animation-duration: $i * 0.25s; }
+  }
+
+  &::-webkit-scrollbar {
+    height: 10px;
+    border-radius: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #efefef;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: #e2e2e2;
+  }
+}
