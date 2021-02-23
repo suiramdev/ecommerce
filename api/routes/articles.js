@@ -3,15 +3,15 @@ var router = express.Router();
 
 /* GET articles. */
 router.get('/', (req, res, next) => {
-    db.query("SELECT * FROM articles", function(err, rows, fields) {
-        res.json(rows);
+    db.collection("articles").find().toArray(function(err, result) {
+       res.json(result);
     });
 });
 
 /* GET trending articles. */
 router.get('/trending', (req, res, next) => {
-    db.query("SELECT * FROM articles ORDER BY article_sales", function(err, rows, fields) {
-        res.json(rows);
+    db.collection("articles").find().sort({ sales: 1 }).toArray(function(err, result) {
+        res.json(result);
     });
 });
 

@@ -1,24 +1,20 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors = require('cors');
-var mysql = require('mysql');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
+require('dotenv').config();
+const mongoClient = require('mongodb').MongoClient;
 
-db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'ecommerce'
+mongoClient.connect(process.env.MONGOURL, function(err, client) {
+    db = client.db(process.env.MONGODB);
 });
 
-db.connect();
+const indexRouter = require('./routes/index');
+const articlesRouter = require('./routes/articles');
 
-var indexRouter = require('./routes/index');
-var articlesRouter = require('./routes/articles');
-
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
