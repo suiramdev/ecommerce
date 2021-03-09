@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {useParams, useRouteMatch, withRouter} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import './Articles.scss';
 import Article from 'components/Article';
 
@@ -32,8 +32,8 @@ class Articles extends Component {
     }
 }
 
-export default withRouter((props) => {
+export default (props) => {
     const params = useParams();
-    console.log(useRouteMatch());
+    console.log(params);
     return <Articles {...props} params={params}/>
-});
+};
