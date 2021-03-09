@@ -98,6 +98,8 @@
 }
 
 .Header__Main__Search-submit {
+  display: flex;
+  align-items: center;
   color: #2457A4;
   border: none;
   outline: none;

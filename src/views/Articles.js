@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {useLocation} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import './Articles.scss';
 import Article from 'components/Article';
 
@@ -26,6 +26,12 @@ class Articles extends Component {
                     {articles && articles.map(item => <Article label={item.name} price={item.price}
                                                            discount={item.discount}/>)}
                 </div>
+                {articles.length <= 0 && (
+                    <div className={"Articles-error"}>
+                        <span>Aucun articles trouvé.</span>
+                        <Link to="/">Retour à l'accueil</Link>
+                    </div>
+                )}
             </div>
         );
     }

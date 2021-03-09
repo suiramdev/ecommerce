@@ -4,6 +4,7 @@ import './App.scss';
 import Header from 'components/Header';
 import Main from 'views/Main';
 import Articles from 'views/Articles';
+import ArticleView from 'views/ArticleView';
 import PrivacyPolicy from 'views/PrivacyPolicy';
 import Footer from 'components/Footer';
 
@@ -14,7 +15,8 @@ function App() {
                 <Header />
                 <Switch>
                     <Route exact path="/" component={Main} />
-                    <Route path="/articles" component={Articles} />
+                    <Route exact path="/articles" component={Articles} />
+                    <Route path="/articles/:id" component={ArticleView} />
                     <Route path="/privacy" component={PrivacyPolicy} />
                 </Switch>
                 <Footer />
