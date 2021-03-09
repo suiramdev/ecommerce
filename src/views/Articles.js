@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {useParams} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 import './Articles.scss';
 import Article from 'components/Article';
 
@@ -13,8 +13,7 @@ class Articles extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.params.search);
-        fetch("http://localhost:9000/articles?search="+this.props.params.search)
+        fetch(`http://localhost:9000/articles?search=${this.props.params.get("search")}`)
             .then(response => response.json())
             .then(data => this.setState({articles: data}));
     }
@@ -24,8 +23,8 @@ class Articles extends Component {
         return (
             <div className="Articles">
                 <div className="Articles-content">
-                    {articles && articles.map(item => <Article label={item.article_label} price={item.article_price}
-                                                           discount={item.article_discount}/>)}
+                    {articles && articles.map(item => <Article label={item.name} price={item.price}
+                                                           discount={item.discount}/>)}
                 </div>
             </div>
         );
@@ -33,7 +32,5 @@ class Articles extends Component {
 }
 
 export default (props) => {
-    const params = useParams();
-    console.log(params);
-    return <Articles {...props} params={params}/>
+    return <Articles {...props} params={new URLSearchParams(useLocation().search)}/>
 };
