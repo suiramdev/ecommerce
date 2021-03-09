@@ -5,12 +5,24 @@ import './ArticleView.scss';
 class ArticleView extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            article: {}
+        }
+    }
+
+    componentDidMount() {
+        fetch(`http://localhost:9000/articles/${this.props.id}`)
+            .then(response => response.json())
+            .then(data => this.setState({article: data}));
     }
 
     render() {
         return (
             <div className="ArticleView">
-                <p>{this.props.id}</p>
+                <p>PropsID : {this.props.id}</p>
+                <br/>
+                <p>Article ID : {this.article.id}</p>
             </div>
         );
     }
