@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import './Header.scss';
 import {ArrowDropDown, LocalShipping, Lock, Search, ShoppingBasket, ViewHeadline} from "@material-ui/icons";
 import flagFR from 'images/flags/fr-FR.svg';
@@ -7,6 +7,25 @@ import flagFR from 'images/flags/fr-FR.svg';
 class Header extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            search: ""
+        }
+
+        this.onSearchChange = this.onSearchChange.bind(this);
+        this.submitSearch = this.submitSearch.bind(this);
+    }
+
+    onSearchChange(event) {
+        this.setState({
+            search: event.target.value
+        })
+    }
+
+    submitSearch() {
+        if (this.state.search.length <= 0) return;
+
+        this.props.history.push(`/articles?search=${this.state.search}`);
     }
 
     render() {
@@ -29,8 +48,9 @@ class Header extends Component {
                         </div>
                         <div className="Header-end">
                             <div className="Header__Main__Search">
-                                <Link to="/articles" className="Header__Main__Search-submit"><Search /></Link>
-                                <input type="text" placeholder="Search for an article, a brand..." />
+                                <button onClick={this.submitSearch} className="Header__Main__Search-submit"><Search /></button>
+                                <input type="text" placeholder="Search for an article, a brand..."
+                                       onChange={this.onSearchChange} onSubmit={this.submitSearch}/>
                             </div>
                             <div className="Header__Main__Cart"><ShoppingBasket /></div>
                             <div className="Header__Main__Profile">
@@ -50,4 +70,6 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default (props) => {
+    return <Header {...props} history={useHistory()}/>;
+};

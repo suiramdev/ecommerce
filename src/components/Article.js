@@ -20,7 +20,7 @@ class Article extends Component {
                 <div className="Article__Content">
                     <span className="Article__Name">{this.props.label}</span>
                     <div>
-                        <span className="Article__Price">{this.props.price-this.props.price*this.props.discount/100} €</span>
+                        <span className="Article__Price">{(this.props.price-this.props.price*this.props.discount/100).toFixed(2)} €</span>
                         {this.props.discount > 0 && (
                             <span className="Article__OldPrice">{this.props.price} €</span>
                         )}

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {useParams, useRouteMatch, withRouter} from 'react-router-dom';
 import './Articles.scss';
 import Article from 'components/Article';
 
@@ -12,7 +13,8 @@ class Articles extends Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:9000/articles")
+        console.log(this.props.params.search);
+        fetch("http://localhost:9000/articles?search="+this.props.params.search)
             .then(response => response.json())
             .then(data => this.setState({articles: data}));
     }
@@ -30,4 +32,8 @@ class Articles extends Component {
     }
 }
 
-export default Articles;
+export default withRouter((props) => {
+    const params = useParams();
+    console.log(useRouteMatch());
+    return <Articles {...props} params={params}/>
+});

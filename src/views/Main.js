@@ -23,13 +23,13 @@ class Main extends Component {
         return (
             <div className="Main">
                 <div className="Main__Header">
-                    <img src={Banner} />
+                    <img src={Banner} alt="banner"/>
                 </div>
                 <section className="Main__Articles">
                     <h1>Articles in trends</h1>
                     <div className="Main__Articles-content">
-                        {trends && trends.map(item => <Article label={item.article_label} price={item.article_price}
-                                                               discount={item.article_discount}/>)}
+                        {trends && trends.map(item => <Article label={item.name} price={item.price}
+                                                               discount={item.discount}/>)}
                     </div>
                 </section>
                 <section className="Main__Articles">
