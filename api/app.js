@@ -13,6 +13,7 @@ mongoClient.connect(process.env.MONGOURL, function(err, client) {
 
 const indexRouter = require('./routes/index');
 const articlesRouter = require('./routes/articles');
+const articleRouter = require('./routes/article');
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/articles', articlesRouter);
+app.use('/article', articleRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

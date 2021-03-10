@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-ObjectId = require("mongodb").ObjectId;
 
 /* GET articles. */
 router.get('/', (req, res, next) => {
@@ -13,13 +12,6 @@ router.get('/', (req, res, next) => {
             res.json(result);
         });
     }
-});
-
-/* GET article by ObjectId. */
-router.get('/:id', (req, res, next) => {
-    db.collection("articles").find( { _id: ObjectId(req.params.id) } ).toArray(function(err, result) {
-        res.json(result);
-    });
 });
 
 /* GET trending articles. */
