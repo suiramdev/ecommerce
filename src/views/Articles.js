@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 import './Articles.scss';
 import Article from 'components/Article';
+import Cookies from "universal-cookie";
 
 class Articles extends Component {
     constructor(props) {
@@ -16,6 +17,8 @@ class Articles extends Component {
         fetch(`http://localhost:9000/articles?search=${this.props.params.get("search")}`)
             .then(response => response.json())
             .then(data => this.setState({articles: data}));
+
+        window.scrollTo(0, 0);
     }
 
     render() {
@@ -23,8 +26,7 @@ class Articles extends Component {
         return (
             <div className="Articles">
                 <div className="Articles-content">
-                    {articles && articles.map(item => <Article label={item.name} price={item.price}
-                                                           discount={item.discount}/>)}
+                    {articles && articles.map(item => <Article id={item._id}/>)}
                 </div>
                 {articles.length <= 0 && (
                     <div className={"Articles-error"}>

@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom';
 import './ArticleView.scss';
 import Placeholder from 'images/placeholder.png';
 import {Favorite, ShoppingCart} from "@material-ui/icons";
+import Cookies from 'universal-cookie';
 
 class ArticleView extends Component {
     constructor(props) {
@@ -17,12 +18,19 @@ class ArticleView extends Component {
         fetch(`http://localhost:9000/article/${this.props.id}`)
             .then(response => response.json())
             .then(data => this.setState({article: data[0]}));
+
+        window.scrollTo(0, 0);
     }
 
     render() {
         return (
             <div className="ArticleView">
                 <div className="ArticleView__Preview">
+                    <div className="ArticleView__Preview-list">
+                        <a><img src={Placeholder}/></a>
+                        <a><img src={Placeholder}/></a>
+                        <a><img src={Placeholder}/></a>
+                    </div>
                     <img src={Placeholder}/>
                 </div>
                 <div className="ArticleView__Details">
@@ -61,5 +69,11 @@ class ArticleView extends Component {
 
 export default (props) => {
     const { id } = useParams();
+    const cookies = new Cookies();
+    let viewedArticles = cookies.get("viewedArticles") || [];
+    if (!viewedArticles.includes(id)) viewedArticles.push(id);
+    if (viewedArticles.length > 5) viewedArticles.splice(0, 1);
+    cookies.set("viewedArticles", viewedArticles, { path: "/" });
+
     return <ArticleView {...props} id={id} />
 };

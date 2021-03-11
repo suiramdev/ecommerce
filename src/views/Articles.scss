@@ -10,13 +10,13 @@
   padding-bottom: 0.5rem;
   margin: 1.5rem;
 
-  & > div {
+  & > .Article {
     margin-right: 2rem;
   }
 
   /*Delayed effect animation*/
   @for $i from 1 to 8 {
-    & > div:nth-child(#{$i}) { animation-duration: $i * 0.25s; }
+    & > .Article:nth-child(#{$i}) { animation-duration: $i * 0.25s; }
   }
 
   &::-webkit-scrollbar {
