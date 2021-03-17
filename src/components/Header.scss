@@ -15,6 +15,10 @@
       & > a {
         display: flex;
         align-items: center;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
@@ -138,16 +142,31 @@
   }
 }
 
+@keyframes SlideRight {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
 .Menu {
   visibility: hidden;
   position: fixed;
   top: 0;
   left: 0;
-  width: 300px;
+  width: 350px;
   height: 100%;
   background-color: white;
   z-index: 999;
   box-shadow: 8px 0px 8px rgba(0, 0, 0, 0.25);
+
+  &.display {
+    visibility: visible;
+    animation: SlideRight 0.25s;
+  }
 }
 
 .Menu__Header {
@@ -161,5 +180,18 @@
 
   h1 {
     font-size: 1.5rem;
+  }
+}
+
+.Menu__Header-close {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  background: none;
+
+  &:hover {
+    cursor: pointer;
   }
 }

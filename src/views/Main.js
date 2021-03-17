@@ -3,7 +3,6 @@ import './Main.scss';
 import Article from 'components/Article';
 import Banner from 'images/banner.png';
 import Cookies from 'universal-cookie';
-import ArticleView from "./ArticleView";
 
 class Main extends Component {
     constructor(props) {

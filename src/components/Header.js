@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import './Header.scss';
-import {ArrowDropDown, LocalShipping, Lock, Search, ShoppingBasket, ViewHeadline} from "@material-ui/icons";
+import {ArrowDropDown, Close, LocalShipping, Lock, Search, ShoppingBasket, ViewHeadline} from "@material-ui/icons";
 import flagFR from 'images/flags/fr-FR.svg';
 
 class Header extends Component {
@@ -28,6 +28,10 @@ class Header extends Component {
         this.props.history.push(`/articles?search=${this.state.search}`);
     }
 
+    displayMenu() {
+        document.querySelector(".Menu").classList.toggle("display");
+    }
+
     render() {
         return (
             <>
@@ -43,7 +47,7 @@ class Header extends Component {
                     </div>
                     <div className="Header__Main">
                         <div className="Header-start">
-                            <a><ViewHeadline style={{marginRight: "0.5rem"}}/></a>
+                            <a onClick={this.displayMenu}><ViewHeadline style={{marginRight: "0.5rem"}}/></a>
                             <Link className="Header__Main-title" to="/">siomazone</Link>
                         </div>
                         <div className="Header-end">
@@ -62,7 +66,12 @@ class Header extends Component {
                 </div>
                 <div className="Menu">
                     <div className="Menu__Header">
-                        <h1>Category</h1>
+                        <h1>Categories</h1>
+                        <a className="Menu__Header-close" onClick={this.displayMenu}><Close/></a>
+                    </div>
+
+                    <div className="Menu__Header">
+                        <h1>Test</h1>
                     </div>
                 </div>
             </>

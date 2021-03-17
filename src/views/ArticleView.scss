@@ -7,7 +7,7 @@
   flex: 1;
   display: inline-flex;
   justify-content: center;
-  padding: 5rem;
+  padding: 3rem;
 
   & > img {
     flex: 1;
@@ -30,7 +30,8 @@
       height: 100%;
     }
 
-    &:hover {
+    &:hover,
+    &.active {
       border-color: #2457a4;
       cursor: pointer;
     }
@@ -41,7 +42,7 @@
   display: flex;
   flex-direction: column;
   flex: 0.45;
-  padding: 4rem;
+  padding: 3rem;
   background-color: white;
 
   & > div {

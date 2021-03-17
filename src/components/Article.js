@@ -33,7 +33,9 @@ class Article extends Component {
     render() {
         return (
             <a className="Article" onClick={this.viewArticle}>
-                <img src={Placeholder} />
+                {this.state.article.covers && ( // Safe image load check
+                    <img src={require(`images/articles/${this.props.id}/${this.state.article.covers[0]}`).default} />
+                )}
                 {this.state.article.discount > 0 && (
                     <div className="Article__Promo">
                         <span>-{this.state.article.discount}%</span>

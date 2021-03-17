@@ -10,16 +10,35 @@ class ArticleView extends Component {
         super(props);
 
         this.state = {
-            article: []
+            article: [],
+            cover: "",
         }
+
+        this.changeCover = this.changeCover.bind(this);
     }
 
     componentDidMount() {
         fetch(`http://localhost:9000/article/${this.props.id}`)
             .then(response => response.json())
-            .then(data => this.setState({article: data[0]}));
+            .then(data => this.setState({
+                article: data[0],
+                cover: data[0].covers[0],
+                option: data[0].options[0]
+            }));
 
         window.scrollTo(0, 0);
+    }
+
+    changeCover(cover) {
+        this.setState({
+            cover: cover
+        });
+    }
+
+    chooseOption(option) {
+        this.setState({
+            option: option
+        });
     }
 
     render() {
@@ -27,11 +46,12 @@ class ArticleView extends Component {
             <div className="ArticleView">
                 <div className="ArticleView__Preview">
                     <div className="ArticleView__Preview-list">
-                        <a><img src={Placeholder}/></a>
-                        <a><img src={Placeholder}/></a>
-                        <a><img src={Placeholder}/></a>
+                        {this.state.article.covers && this.state.article.covers.map(cover => {
+                            const image = require(`images/articles/${this.props.id}/${cover}`).default;
+                            return (<a onClick={() => this.changeCover(cover)} className={cover == this.state.cover && "active"}><img src={image}/></a>)
+                        })}
                     </div>
-                    <img src={Placeholder}/>
+                    {this.state.article.covers && (<img src={require(`images/articles/${this.props.id}/${this.state.cover}`).default}/>)}
                 </div>
                 <div className="ArticleView__Details">
                     <h1>{this.state.article.name}</h1>
@@ -43,10 +63,11 @@ class ArticleView extends Component {
                     <div>
                         <h2>Choose a detail</h2>
                         <div className="ArticleView-row">
-                            <a className="ArticleView__Details-btn active"><img src={Placeholder}/></a>
-                            <a className="ArticleView__Details-btn"><img src={Placeholder}/></a>
-                            <a className="ArticleView__Details-btn"><img src={Placeholder}/></a>
-                            <a className="ArticleView__Details-btn"><img src={Placeholder}/></a>
+                            {this.state.article.options && this.state.article.options.map(option => {
+                                const image = require(`images/articles/${this.props.id}/${option}`).default;
+                                return (<a className={`ArticleView__Details-btn ${option == this.state.option && "active"}`}
+                                           onClick={() => this.chooseOption(option)}><img src={image}/></a>);
+                            })}
                         </div>
                     </div>
                     <div>

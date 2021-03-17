@@ -5,6 +5,7 @@ import Header from 'components/Header';
 import Main from 'views/Main';
 import Articles from 'views/Articles';
 import ArticleView from 'views/ArticleView';
+import Cart from 'views/Cart';
 import PrivacyPolicy from 'views/PrivacyPolicy';
 import Footer from 'components/Footer';
 
@@ -17,6 +18,7 @@ function App() {
                     <Route exact path="/" component={Main} />
                     <Route exact path="/articles" component={Articles} />
                     <Route path="/article/:id" component={ArticleView} />
+                    <Route exact path="/cart" component={Cart} />
                     <Route path="/privacy" component={PrivacyPolicy} />
                 </Switch>
                 <Footer />
